@@ -1,0 +1,62 @@
+[
+    {
+        "employeeId": "223564",
+        "firstName": "Projjwalanka",
+        "lastName": "Pramanick",
+        "status": "A"
+    },
+    {
+        "employeeId": "291812",
+        "firstName": "Upasak",
+        "lastName": "Ganguly",
+        "status": "A"
+    },
+    {
+        "employeeId": "308995",
+        "firstName": "Rotoja",
+        "lastName": "Chatterjee",
+        "status": "A"
+    },
+    {
+        "employeeId": "313255",
+        "firstName": "Asish",
+        "lastName": "Mukherjee",
+        "status": "A"
+    },
+    {
+        "employeeId": "362480",
+        "firstName": "Sourav",
+        "lastName": "Tiwari",
+        "status": "A"
+    },
+    {
+        "employeeId": "397538",
+        "firstName": "Sujana",
+        "lastName": "Dey",
+        "status": "A"
+    },
+    {
+        "employeeId": "456206",
+        "firstName": "Kamal",
+        "lastName": "Sarkar",
+        "status": "A"
+    },
+    {
+        "employeeId": "500099",
+        "firstName": "Manish",
+        "lastName": "Somasundaram",
+        "status": "A"
+    },
+    {
+        "employeeId": "474325",
+        "firstName": "Kousik",
+        "lastName": "Dey",
+        "status": "A"
+    },
+    {
+        "employeeId": "889665",
+        "firstName": "Priya",
+        "lastName": "Adak",
+        "status": "A"
+    }
+]
