@@ -126,7 +126,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- <plugin>
+			 <plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.2.0</version>
@@ -141,7 +141,7 @@
 				<configuration>
 					<dockerHost>http://172.18.2.50:2375</dockerHost>
 					<dockerHost>https://192.168.99.100:2376</dockerHost>
-					<repository>vigneshsuryah/projectmanager-app</repository>
+					<repository>sudip05/test_project</repository>
 					<imageName>vs-projectmanager-app-image</imageName>
 					<tag>${project.version}</tag>
 					<dockerDirectory>docker</dockerDirectory>
@@ -149,11 +149,11 @@
 						<resource>
 							<targetPath></targetPath>
 							<directory>${project.build.directory}</directory>
-							<include>projectmanager-server-0.0.1-SNAPSHOT.jar</include>
+							<include>projectmanager-API-0.0.1-SNAPSHOT.jar</include>
 						</resource>
 					</resources>
 				</configuration>
-			</plugin> -->
+			</plugin> 
 		</plugins>
 	</build>
 </project>
