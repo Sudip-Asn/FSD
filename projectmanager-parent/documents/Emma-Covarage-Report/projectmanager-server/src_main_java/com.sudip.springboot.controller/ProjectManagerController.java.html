@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ProjectManagerController.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">projectmanager-server (1) (Jan 17, 2019 4:01:25 PM)</a> &gt; <a href="../../index.html" class="el_group">projectmanager-server</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.sudip.springboot.controller</a> &gt; <span class="el_source">ProjectManagerController.java</span></div><h1>ProjectManagerController.java</h1><pre class="source lang-java linenums">package com.sudip.springboot.controller;
+
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sudip.springboot.Application;
+import com.sudip.springboot.bo.ParentTaskVO;
+import com.sudip.springboot.bo.ProjectVO;
+import com.sudip.springboot.bo.TaskVO;
+import com.sudip.springboot.bo.UserVO;
+import com.sudip.springboot.service.ProjectManagerService;
+
+@RestController
+public class ProjectManagerController {
+	
+<span class="fc" id="L24">	private static final Logger LOGGER = LogManager.getLogger(ProjectManagerController.class);</span>
+	private ProjectManagerService projectManagerService;
+
+	@Autowired
+<span class="fc" id="L28">	public ProjectManagerController(ProjectManagerService projectManagerService) {</span>
+<span class="fc" id="L29">		this.projectManagerService = projectManagerService;</span>
+<span class="fc" id="L30">	}</span>
+
+	@GetMapping(&quot;/home&quot;)
+	public String home() {
+<span class="fc" id="L34">		return &quot;forward:/index.html&quot;;</span>
+	}
+	
+	@GetMapping(&quot;/test&quot;)
+	public String testhome() {
+<span class="fc" id="L39">		return &quot;Project Manager App - Creator: Chatterjee, Sudip&quot;;</span>
+	}
+	
+	
+	@GetMapping(&quot;/api/tasks&quot;)
+	public List&lt;TaskVO&gt; getTasks() {
+<span class="fc" id="L45">		List&lt;TaskVO&gt; tasks = null;</span>
+		
+<span class="fc" id="L47">			tasks = projectManagerService.retriveTasks();</span>
+		
+		
+<span class="fc" id="L50">		return tasks;</span>
+	}
+	
+	@PostMapping(path = &quot;/api/tasks&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+	public boolean updateTask(@RequestBody TaskVO task) {
+		
+<span class="fc" id="L56">			projectManagerService.updateTask(task); </span>
+		
+<span class="fc" id="L58">		return true;</span>
+	}
+	
+	
+	@GetMapping(&quot;/api/parenttasks&quot;)
+	public List&lt;ParentTaskVO&gt; getAllParentTasks() {
+<span class="fc" id="L64">		List&lt;ParentTaskVO&gt; tasks = projectManagerService.retriveParentTasks();</span>
+<span class="fc" id="L65">		return tasks;</span>
+	}
+	
+	@GetMapping(&quot;/api/parenttasks/projects/{projectId}&quot;)
+	public List&lt;ParentTaskVO&gt; getParentTasksForProjectId(@PathVariable(name=&quot;projectId&quot;) String projectId) {
+<span class="fc" id="L70">		List&lt;ParentTaskVO&gt; tasks = null;</span>
+		
+<span class="fc" id="L72">			tasks = projectManagerService.retriveParentTasksForProjectId(projectId); </span>
+<span class="fc" id="L73">		return tasks;</span>
+	}
+	
+	@PostMapping(path = &quot;/api/parenttasks&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+	public boolean updateParentTask(@RequestBody ParentTaskVO parentTask) {
+		
+<span class="fc" id="L79">			projectManagerService.updateParentTask(parentTask);</span>
+		
+<span class="fc" id="L81">		return true;</span>
+	}
+	
+	
+	@GetMapping(&quot;/api/projects&quot;)
+	public List&lt;ProjectVO&gt; getProjects() {
+<span class="fc" id="L87">		List&lt;ProjectVO&gt; projects = projectManagerService.retriveProjects();</span>
+<span class="fc" id="L88">		return projects;</span>
+	}
+	
+	@PostMapping(path = &quot;/api/projects&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+	public boolean updateProject(@RequestBody ProjectVO project) {
+		
+<span class="fc" id="L94">			projectManagerService.updateProject(project);</span>
+	
+<span class="fc" id="L96">		return true;</span>
+	}
+	
+	
+	@GetMapping(&quot;/api/users&quot;)
+	public List&lt;UserVO&gt; getUsers() {
+<span class="fc" id="L102">		List&lt;UserVO&gt; users = null;</span>
+		
+<span class="fc" id="L104">			users = projectManagerService.retriveUsers();</span>
+			
+<span class="fc" id="L106">		return users;</span>
+	}
+	
+	@PostMapping(path = &quot;/api/users&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+	public boolean updateUsers(@RequestBody UserVO user) {
+		
+<span class="fc" id="L112">			projectManagerService.updateUser(user);</span>
+		
+<span class="fc" id="L114">		return true;</span>
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span>projectmanager-server (1) (Jan 17, 2019 4:01:25 PM)</div></body></html>
