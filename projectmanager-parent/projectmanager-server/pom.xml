@@ -80,6 +80,16 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
+    		<groupId>com.google.cloud.sql</groupId>
+    		<artifactId>mysql-socket-factory</artifactId>
+    		<version>1.0.16</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.google.cloud.tools</groupId>
+    		<artifactId>appengine-plugins-core</artifactId>
+    		<version>0.8.2</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sudip.projectmanager</groupId>
 			<artifactId>projectmanager-web</artifactId>
 			<version>${project.version}</version>
@@ -153,6 +163,12 @@
 						</resource>
 					</resources>
 				</configuration>
+			</plugin>
+			
+			<plugin>
+   				<groupId>com.google.appengine</groupId>
+   				<artifactId>appengine-maven-plugin</artifactId>
+   				<version>1.9.80</version>
 			</plugin> 
 		</plugins>
 	</build>
