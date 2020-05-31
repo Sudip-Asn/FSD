@@ -4,3 +4,8 @@ env: flex
 handlers: 
     url: /.*
     script: this field is required, but ignored
+    
+env_variables:
+    MYSQL_DSN: mysql:unix_socket=/cloudsql/my-first-gcp-project-278604:us-central1:my-first-mysql-instance;dbname=PROJECTMANAGER
+    MYSQL_USER: root
+    MYSQL_PASSWORD: password
